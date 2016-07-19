@@ -1,0 +1,25 @@
+<md-sidenav
+        class="md-sidenav-left md-whiteframe-z2"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')">
+
+    <md-toolbar>
+        <h2>Todo App 3D</h2>
+    </md-toolbar>
+
+
+    <md-content class="scrollable-nav-content">
+        <md-list>
+            <md-list-item ng-repeat="task in tasks | orderBy:'name'">  <!--  | filter:searchText -->
+                <md-button ng-click="selectUser(task)" ng-class="{'selected': task === selected}">
+                    <md-icon md-svg-icon="{{task.avatar}}" class="avatar"></md-icon>
+                    {{task.name}}
+                </md-button>
+            </md-list-item>
+        </md-list>
+    </md-content>
+
+    <md-button class="md-fab md-fab-bottom-right" ng-click="addUser($event)">
+        <ng-md-icon icon="add"></ng-md-icon>
+    </md-button>
+</md-sidenav>
