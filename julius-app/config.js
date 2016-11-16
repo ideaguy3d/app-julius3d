@@ -6,7 +6,7 @@
 
 var jConfig = (function () {
     var jAppName = "juliusApp";
-    var jAppDependencies = ['ui.router'];
+    var jAppDependencies = ['ui.router', 'firebase'];
 
     //this'll create a new vertical module.
     var jCreateModule = function (moduleName, dependencies) {

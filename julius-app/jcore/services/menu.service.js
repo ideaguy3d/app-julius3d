@@ -4,11 +4,12 @@
 
 "use strict";
 
-angular.module('jcore').service('Menus', [
+angular.module('jcore').service('jMenus', [
     function () {
         this.defaultRoles = ['*'];
         this.menus = {};
 
+        // 1st method, private.
         var shouldRender = function (user) {
             if (user) {
                 if (!!~this.roles.indexOf('*')) {
@@ -31,6 +32,7 @@ angular.module('jcore').service('Menus', [
             return false;
         };
 
+        // 2nd method
         this.validateMenuExistence = function (menuId) {
             if (menuId && menuId.length) {
                 if (this.menus[menuId]) {
@@ -44,12 +46,14 @@ angular.module('jcore').service('Menus', [
             }
         };
 
+        // 3rd method
         this.getMenu = function (menuId) {
-            this.validateMenuExistance(menuId);
+            this.validateMenuExistence(menuId);
 
             return this.menus[menuId];
         };
 
+        // 4th method
         this.addMenu = function (menuId, isPublic, roles) {
             this.menus[menuId] = {
                 isPublic: isPublic || false,
@@ -61,12 +65,14 @@ angular.module('jcore').service('Menus', [
             return this.menus[menuId];
         };
 
+        // 5th method
         this.removeMenu = function (menuId) {
             this.validateMenuExistence(menuId);
 
             delete this.menus[menuId];
         };
 
+        // 6th method
         this.addMenuItem = function (menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute,
                                      isPublic, roles, position) {
             this.validateMenuExistence(menuId);
@@ -89,7 +95,7 @@ angular.module('jcore').service('Menus', [
             return this.menus[menuId];
         };
 
-        //search for menu item
+        // 7th method. Search for menu item.
         this.addSubMenuItem = function (menuId, rootMenuItemURL, menuItemTitle, menuItemURL, menuItemUIRoute,
                                         isPublic, roles, position) {
             this.validateMenuExistence(menuId);

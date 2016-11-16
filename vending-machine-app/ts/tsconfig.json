@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "es5",
+        /* could also specify the "OutDir" option as well, which 
+        will create 1 js file per ts file and place them in the
+        specified directory. */
+        "outFile": "../js/app.js"
+    }
+}
